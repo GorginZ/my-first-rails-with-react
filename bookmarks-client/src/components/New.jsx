@@ -2,6 +2,9 @@ import React from 'react'
 
 class New extends React.Component {
   addBookmark = async () => {
+    // the body the http request
+    // being sent to rails
+    // stored in the db as a new bookmark
     const body = {
       bookmark: {
         title: "amazon",
@@ -10,15 +13,17 @@ class New extends React.Component {
       }
     }
     try {
-        //http request
-        //post request
+      // http request
+      // POST
       await fetch("http://localhost:3000/create", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
         },
+        // converting a js obj into a json string for the request
         body: JSON.stringify(body)
       })
+      // invoking a function
       this.props.getBookmarks()
     } catch(err) {
       console.log(err)

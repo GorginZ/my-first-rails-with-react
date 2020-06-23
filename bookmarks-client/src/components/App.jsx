@@ -7,8 +7,12 @@ class App extends React.Component {
   }
 
   getBookmarks = async () => {
+    // fetching from rails
+    // GET http request
+    // list of bookmarks
     const response = await fetch("http://localhost:3000");
     const bookmarks = await response.json();
+    // sets state with the updated list of bookmarks
     this.setState({ bookmarks: bookmarks });
   };
 
